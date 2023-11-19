@@ -1,0 +1,84 @@
+<div class="banner pb-4"></div>
+<div class="main max-w-5xl my-0 mx-auto">
+  <div
+    class="mb-4 border-[1px] border-[#ccc] h-10 shadow rounded-xl bg-white border-none"
+  >
+    <div class="flex items-center">
+      <div class="bg-orange-300 p-1 h-full rounded-sm">
+        <i class="bx bxs-radiation text-2xl"></i>
+      </div>
+      <div class="text-base pl-2" *ngIf="!user">
+        Bạn đã là thành viên?
+        <span class="underline decoration-1 text-orange-300"
+          ><a class="hover:text-orange-300" href="">Đăng nhập ngay</a></span
+        >
+      </div>
+    </div>
+  </div>
+  <div
+    class="border-[1px] border-[#ccc] py-2 px-4 shadow rounded-xl bg-white border-none"
+  >
+    <div class="text-base font-semibold text-black py-2">Thông tin giao hàng</div>
+    <div class="text-base font-semibold text-black py-2">Giao hàng nhanh express</div>
+    <div class="border-solid border-[1px] border-[#ccc] mt-2"></div>
+    <form
+      class="p-3 w-full max-w-[500px] mx-auto"
+      [formGroup]="formCheck"
+      (ngSubmit)="onHandleSubmit()"
+    >
+      <div class="grid grid-cols-[1fr_3fr] my-4">
+        <label class="py-1" for="">Họ tên người nhận</label>
+        <input
+          class="pl-3 ml-3 py-1 border-solid border-[1px] w-full border-[#ccc] rounded-sm"
+          type="text"
+          name=""
+          id=""
+          formControlName="fullname"
+          placeholder="Mời nhập tên"
+        />
+      </div>
+      <div class="grid grid-cols-[1fr_3fr] my-4">
+        <label class="py-1" for="">Email</label>
+        <input
+          class="pl-3 ml-3 py-1 border-solid border-[1px] w-full border-[#ccc] rounded-sm"
+          type="text"
+          name=""
+          id=""
+          formControlName="email"
+          placeholder="Mời nhập email"
+        />
+      </div>
+      <div class="grid grid-cols-[1fr_3fr] my-4">
+        <label class="py-1" for="">Số điện thoại</label>
+        <input
+          class="pl-3 ml-3 py-1 border-solid border-[1px] w-full border-[#ccc] rounded-sm"
+          type="text"
+          name=""
+          formControlName="phone"
+          id=""
+          placeholder="Mời nhập số điện thoại"
+        />
+      </div>
+      <div class="grid grid-cols-[1fr_3fr] my-4">
+        <label class="py-1" for="">Địa chỉ người nhận</label>
+        <input
+          class="pl-3 ml-3 py-1 border-solid border-[1px] w-full border-[#ccc] rounded-sm"
+          type="text"
+          name=""
+          id=""
+          formControlName="address"
+          placeholder="Mời nhập địa chỉ"
+        />
+      </div>
+
+      <div class="mt-4">
+        <button
+          type="submit"
+          class="text-white py-1 px-4 rounded-md bg-green-500"
+        >
+          Xác nhận
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

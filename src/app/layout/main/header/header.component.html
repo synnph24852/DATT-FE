@@ -1,0 +1,126 @@
+<header class="header bg-black text-white">
+  <div class="flex justify-between items-center py-2 max-w-[1300px] mx-auto">
+    <a routerLink="/" class="logo">
+      <img
+        class="w-[215px] h-40px"
+        src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/fahasa-logo.png"
+        alt=""
+      />
+    </a>
+    <!-- Search -->
+    <div #header_search class="search w-[460px] relative text-black">
+      <input
+        class="border-solid border-2 border-[#ccc] w-[100%] text-black py-2 pl-10 relative rounded-md outline-red-200"
+        (focus)="isActiveSearch = true"
+        placeholder="Tìm kiếm..."
+        (input)="handleChangeSearch($event)"
+      />
+      <span class="absolute left-4 top-1/2 -translate-y-1/2 text-black"
+        ><i class="bx bx-search text-xl"></i
+      ></span>
+      <div
+        class="z-[100] absolute bg-white p-5 left-0 right-0 top-[50px] rounded-md shadow-lg"
+        *ngIf="isActiveSearch"
+      >
+        <div>
+          <div class="flex items-center">
+            <i
+              class="bx bx-loader-alt text-2xl animate-spin"
+              *ngIf="isLoading"
+            ></i>
+
+            <i class="text-black bx bx-search text-xl" *ngIf="!isLoading"></i>
+            <span class="px-2">Kết quả cho "{{ searchValue }}"</span>
+          </div>
+          <div class="flex items-center justify-between pt-[24px] pb-4">
+            <span class="uppercase text-sm font-medium">Sách</span>
+            <a routerLink="" class="text-sm hover:text-orange-400">Xem thêm</a>
+          </div>
+
+          <div
+            class="border-solid border-b-[1px] border-[#ccc] my-[10px] w-[100%]"
+          ></div>
+          <p class="text-sm" *ngIf="!books || books.length === 0">
+            Không có kết quả tìm kiếm!!
+          </p>
+          <div class="max-h-[400px] min-h-[200px] overflow-y-auto scrollbar-sm">
+            <a
+              (click)="isActiveSearch = false"
+              routerLink="/books/{{ book.slug }}"
+              class="flex items-center py-1 px-2 cursor-pointer hover:bg-red-200 rounded-md hover:text-gray-600"
+              *ngFor="let book of books"
+            >
+              <img
+                class="w-[46px] h-[46px] rounded-[50%]"
+                src="{{ book.avatar }}"
+                alt=""
+              />
+              <div class="ml-4 flex flex-col text-black">
+                <span class="text-base font-semibold">{{ book.name }}</span>
+                <span class="text-xs">{{ book.author }}</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="menu flex items-center">
+      <div
+        class="flex mx-3 w-10 h-10 cursor-pointer rounded-full hover:bg-slate-50"
+      >
+        <i class="m-auto bx bxs-bell-ring text-center text-xl"></i>
+      </div>
+      <a
+        routerLink="/cart"
+        class="relative flex mx-3 w-10 h-10 cursor-pointer rounded-full hover:bg-slate-50"
+      >
+        <i class="m-auto bx bx-cart-alt text-center text-2xl"></i>
+
+        <div
+          class="absolute top-0 right-0 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center"
+        >
+          {{ totalCart }}
+        </div>
+      </a>
+      <div class="flex" *ngIf="!userLogin">
+        <div
+          class="flex mx-3 w-10 h-10 cursor-pointer rounded-full hover:bg-slate-50"
+        >
+          <i class="m-auto bx bx-user text-center text-2xl"></i>
+        </div>
+
+        <div class="font-semibold flex flex-col">
+          <a routerLink="/login">Login</a>
+          <a routerLink="/register">Register</a>
+        </div>
+      </div>
+
+      <div class="ml-3 relative" *ngIf="userLogin">
+        <div
+          class="w-10 h-10 cursor-pointer hover:opacity-80"
+          (click)="isActiveInfo = !isActiveInfo"
+        >
+          <img src="{{ userLogin.avatar }}" alt="" class="rounded-full" />
+        </div>
+
+        <div
+          *ngIf="isActiveInfo"
+          class="z-10 absolute w-36 rounded-md py-2 shadow-md text-black bg-white top-[120%] right-0"
+        >
+          <button
+            class="w-full px-3 hover:bg-red-300 py-1.5 rounded-sm font-semibold block text-left"
+          >
+            Đơn hàng của bạn
+          </button>
+          <button
+            class="w-full px-3 hover:bg-red-300 py-1.5 rounded-sm font-semibold block text-left"
+            (click)="handleLogout()"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

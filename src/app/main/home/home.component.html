@@ -1,0 +1,109 @@
+<div class="max-w-[1300px] mx-auto">
+  <div class="my-6 box-module">
+    <nz-carousel nzAutoPlay nzEnableSwipe="false">
+      <div nz-carousel-content>
+        <div class="h-[400px]">
+          <img
+            src="../../../assets/slider/banner1.png"
+            class="object-cover rounded-md"
+          />
+        </div>
+      </div>
+      <div nz-carousel-content class="h-[400px]">
+        <img
+          src="../../../assets/slider/banner2.png"
+          class="object-cover rounded-md"
+        />
+      </div>
+      <div nz-carousel-content class="h-[400px]">
+        <img
+          src="../../../assets/slider/banner3.png"
+          class="object-cover rounded-md"
+        />
+      </div>
+      <div nz-carousel-content class="h-[400px]">
+        <img
+          src="../../../assets/slider/banner4.png"
+          class="object-cover rounded-md"
+        />
+      </div>
+      <div nz-carousel-content class="h-[400px]">
+        <img
+          src="../../../assets/slider/banner5.png"
+          class="object-cover rounded-md"
+        />
+      </div>
+    </nz-carousel>
+  </div>
+
+  <div class="box-module">
+    <div class="text-xl font-semibold">Tất cả danh mục sách</div>
+
+    <div class="mt-3 grid grid-cols-7 gap-10">
+      <a
+        routerLink="/category/{{ category.slug }}"
+        *ngFor="let category of categories"
+        class="flex flex-col"
+      >
+        <div class="overflow-hidden">
+          <img
+            src="{{ category.avatar }}"
+            alt=""
+            class="rounded-sm hover:scale-105 transition-all aspect-square"
+          />
+        </div>
+
+        <h3 class="mt-1 text-base text-center hover:text-red-600 font-medium">
+          {{ category.name }}
+        </h3>
+      </a>
+    </div>
+  </div>
+
+  <div class="mt-6 product box-module">
+    <div class="wrapper">
+      <div
+        class="header flex justify-between border-solid border-[#ccc] border-b"
+      >
+        <div class="text-xl font-semibold">Sách bán chạy nhất</div>
+        <div>
+          <ul class="flex mb-4">
+            <li class="li text-[#FE642E]">Sách mới</li>
+            <li class="li">Sách sắp phát hành</li>
+            <li class="mr-4">Sách bán chạy</li>
+            <li class="flex items-center text-[#FE642E]">
+              Xem thêm
+              <i class="bx bx-chevron-right text-[18px] font-bold"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- product -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10 mx-auto pb-20"
+      >
+        <div *ngFor="let book of topBooks">
+          <app-book-item [book]="book" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6 product box-module">
+    <div class="wrapper">
+      <div
+        class="header flex justify-between border-solid border-[#ccc] border-b"
+      >
+        <div class="text-xl font-semibold">Sách mới phát hành</div>
+      </div>
+      <!-- product -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10 mx-auto pb-20"
+      >
+        <div *ngFor="let book of books">
+          <app-book-item [book]="book" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

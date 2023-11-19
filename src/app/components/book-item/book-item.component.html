@@ -1,0 +1,49 @@
+<div class="">
+  <div class="mt-14 relative">
+    <a
+      routerLink="/books/{{ book.slug }}"
+      class="flex rounded-md overflow-hidden hover:scale-100-img"
+    >
+      <img
+        class="rounded-md text-center w-full aspect-[9/11] object-cover transition-all"
+        src="{{ book.avatar }}"
+        alt=""
+      />
+    </a>
+    <div class="absolute left-0 top-0">
+      <img
+        src="https://bookbuy.vn/Images/frontend/base/comming-soon-small.png"
+        alt=""
+      />
+    </div>
+    <span class="absolute right-0 top-0"
+      ><div class="border-solid rounded-[60%] text-white p-2 bg-red-500">
+        -{{ calculateDiscount(book.price, book.original_price) }}%
+      </div></span
+    >
+  </div>
+  <a routerLink="/books/{{ book.slug }}">
+    <h3
+      class="mt-1 font-medium text-[#2d2d2d] text-xl line-clamp-2 h-14 overflow-hidden hover:text-purple-800"
+    >
+      {{ book.name }}
+    </h3>
+  </a>
+  <div class="flex justify-between text-xs my-2 text-red-400">
+    <span><strong>Đã bán: </strong>{{book.quantity_sold}}</span>
+    <span><strong>Trong kho: </strong>{{book.quantity}}</span>
+  </div>
+  <div class="text-[#373737] text-sm text-center mb-2">
+    Tác giả - {{ book.author }}
+  </div>
+  <div
+    class="flex justify-between items-center price text-[18px] font-medium text-red-500"
+  >
+    {{ book.price.toLocaleString() }} vnđ
+    <span class="text-[12px] line-through text-slate-500 mr-1"
+      >{{ book.original_price.toLocaleString() }} vnđ</span
+    ><span class="text-[12px] bg-red-600 p-1 text-white"
+      >-{{ calculateDiscount(book.price, book.original_price) }}%</span
+    >
+  </div>
+</div>

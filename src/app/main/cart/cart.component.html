@@ -1,0 +1,244 @@
+<div class="main max-w-[1300px] mx-auto">
+  <div class="flex items-center mt-6 mb-4">
+    <h1 class="font-medium text-xl uppercase">Giỏ hàng</h1>
+    <span class="text-base ml-2">({{ cart?.length }} Sản phẩm)</span>
+  </div>
+  <div class="cart grid md:grid-cols-[1fr_400px] gap-6">
+    <!-- col-1 -->
+    <div>
+      <!-- col-1 header -->
+      <div
+        class="flex items-center justify-between box-module bg-white font-bold"
+      >
+        <div class="flex items-center">
+          <div class="flex items-center mr-4">
+            <input
+              class="w-4 h-4"
+              type="checkbox"
+              name=""
+              id=""
+              [(ngModel)]="selectAll"
+              (change)="selectAllItems()"
+            />
+          </div>
+          <span class="text-[15px] mr-4"
+            >Chọn tất cả sản phẩm ({{ cart?.length }} sản phẩm)</span
+          >
+        </div>
+        <div class="flex">
+          <span class="mx-5">số lượng</span>
+          <span class="mx-5">Thành tiền</span>
+          <div class="w-20"></div>
+        </div>
+      </div>
+
+      <!-- col-1 second -->
+      <section
+        class="mt-4 flex items-center justify-evenly box-module"
+        *ngFor="let product of cart"
+      >
+        <div>
+          <input
+            type="checkbox"
+            name=""
+            id=""
+            class="w-4 h-4 cursor-pointer"
+            [checked]="selectedItems.includes(product)"
+            (change)="toggleItemSelection(product)"
+          />
+        </div>
+
+        <div class="ml-4 flex w-full">
+          <div class="">
+            <img
+              class="w-[100px] h-[120px] cursor-pointer rounded-sm"
+              src="{{ product.avatar }}"
+              alt=""
+            />
+          </div>
+
+          <div
+            class="flex-1 py-2 flex flex-col justify-between pl-7 font-semibold"
+          >
+            <a routerLink="">{{ product.name }}</a>
+            <span class="text-base font-medium"
+              >{{ product.price }} đ
+              <span class="text-[#ccc] text-xs line-through"
+                >{{ product.original_price }} đ</span
+              ></span
+            >
+          </div>
+
+          <div class="w-48 flex justify-around items-center">
+            <div
+              class="flex items-center text-center border-solid border-[1px] border-[#ccc] my-10 rounded-md"
+            >
+              <button
+                class="hover:bg-slate-400 px-3"
+                (click)="handleDecrementCart(product._id!)"
+              >
+                <i class="bx bx-minus"></i>
+              </button>
+              <input
+                class="w-8 text-center text-base mx-1"
+                type="number"
+                value="{{ product.amount }}"
+                (change)="handleUpdateCart(product._id!, $event)"
+                min="0"
+              />
+              <button
+                class="hover:bg-slate-400 px-3"
+                (click)="handleIncrementCart(product._id!)"
+              >
+                <i class="bx bx-plus"></i>
+              </button>
+            </div>
+
+            <span class="text-[#C92127] font-bold text-base">8.500 đ</span>
+          </div>
+
+          <div class="w-20 flex" (click)="handleRemoveCart(product._id)">
+            <i class="bx bx-trash m-auto text-2xl hover:text-[#C92127]"></i>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- col-2 -->
+    <div class="flex flex-col">
+      <div class="box-module">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center cursor-pointer hover:opacity-50">
+            <i class="bx bx-run text-[#2F80ED] text-xl"></i>
+            <span class="ml-2 text-[#2F80ED] text-sm">Khuyến mại</span>
+          </div>
+          <div class="flex items-center cursor-pointer hover:opacity-50">
+            <span class="text-[#2F80ED] text-sm">Xem thêm</span>
+            <i class="bx bx-chevron-right text-[#2F80ED] text-xl mt-[1px]"></i>
+          </div>
+        </div>
+        <!-- seoler -->
+        <div class="max-h-[200px] overflow-y-auto scrollbar-sm -mr-7 pr-7">
+          <div class="border-solid border-t-2 border-[#ccc] my-2"></div>
+          <section>
+            <div class="flex items-center justify-between">
+              <div class="font-semibold text-base">Mã giảm giá 30K</div>
+              <a href="">Xem thêm</a>
+            </div>
+
+            <div class="text-sm text-[#7A7E7F]">
+              Áp dụng từ thứ 2 đến thứ 6 hàng tuần
+            </div>
+            <div class="flex items-center justify-between mt-5">
+              <div>
+                <div
+                  class="border-solid border-t-4 border-[#B6D3F9] rounded-lg"
+                ></div>
+                <div>Mua thêm 270.000 đ để nhận mã 20%</div>
+              </div>
+              <div>
+                <button
+                  class="bg-[#2F80ED] px-3 py-2 rounded-xl hover:opacity-50"
+                >
+                  <a class="text-white" href="">Mua thêm</a>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <div class="border-solid border-t-2 border-[#ccc] my-3"></div>
+          <section>
+            <div class="flex items-center justify-between">
+              <div class="font-semibold text-base">Mã giảm giá 30K</div>
+              <a href="">Xem thêm</a>
+            </div>
+            <div class="text-sm text-[#7A7E7F]">
+              Áp dụng từ thứ 2 đến thứ 6 hàng tuần
+            </div>
+            <div class="flex items-center justify-between mt-5">
+              <div>
+                <div
+                  class="border-solid border-t-4 border-[#B6D3F9] rounded-lg"
+                ></div>
+                <div>Mua thêm 270.000 đ để nhận mã 20%</div>
+              </div>
+
+              <div>
+                <button
+                  class="bg-[#2F80ED] px-3 py-2 rounded-xl hover:opacity-50"
+                >
+                  <a class="text-white" href="">Mua thêm</a>
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="border-solid border-t-[1px] border-[#ccc] my-4"></div>
+        <div class="bg-[#2F80ED33] px-2 py-2 rounded-xl cursor-pointer">
+          <div class="flex items-center justify-between hover:opacity-50">
+            <span class="text-[#2F80ED] pl-2 font-medium"
+              >1 khuyến mãi đủ điểu kiện</span
+            >
+            <span
+              ><i
+                class="bx bx-chevron-right text-xl text-[#2F80ED] font-semibold"
+              ></i
+            ></span>
+          </div>
+        </div>
+        <div class="flex items-center mt-2">
+          <span class="text-[#9fa7ab] mr-3">Có thể áp dụng nhiều loại mã</span>
+          <i class="bx bx-barcode text-[#9fa7ab] text-lg"></i>
+        </div>
+      </div>
+      <!-- col-2-sub -->
+      <div class="box-module mt-4">
+        <div class="flex items-center justify-between">
+          <span class="text-base">Thành tiền</span>
+          <span class="text-base"
+            >{{ handleTotalCart().toLocaleString() }} vnđ</span
+          >
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-base">Giảm giá</span>
+          <span class="text-base">- 30.000 vnđ</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-base">Phí vận chuyển</span>
+          <span class="text-base">+ 19.000 vnđ</span>
+        </div>
+
+        <div class="border-solid border-[1px] border-[#f7f7f7] my-3"></div>
+        <div class="flex items-center justify-between">
+          <span class="font-semibold text-base">Tổng Số Tiền (gồm VAT)</span>
+          <span class="font-semibold text-lg text-[#C92127]"
+            >{{
+              handleTotalCart()
+                ? (handleTotalCart() - 21000).toLocaleString()
+                : 0
+            }}
+            đ</span
+          >
+        </div>
+        <div
+          [ngClass]="
+            handleTotalCart() === 0
+              ? ['bg-[#ccc] pointer-events-none']
+              : ['bg-[#2b2795] pointer-events-auto']
+          "
+          class="flex items-center justify-center w-[100%] p-2 rounded-xl mt-3 cursor-pointer hover:opacity-50"
+          (click)="handlePayment()"
+        >
+          <span class="text-white font-semibold text-lg uppercase"
+            >Thanh toán</span
+          >
+        </div>
+        <div>
+          <a class="text-xs text-[#C92127]" href=""
+            >(Giảm giá ở web chỉ dành cho bán lẻ)</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

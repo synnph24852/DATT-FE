@@ -1,0 +1,50 @@
+<div class="">
+  <a routerLink="/admin/categories/add" class="my-4 flex justify-end">
+    <button class="rounded-md px-4 py-2 bg-[#223ab6] text-white">
+      Thêm category
+    </button>
+  </a>
+  <nz-table #basicTable [nzData]="categories">
+    <thead>
+      <tr>
+        <th>Tên category</th>
+        <th>Ảnh</th>
+        <th>Ngày tạo</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.name }}</td>
+        <td>
+          <div class="w-14 h-14">
+            <img
+              src="{{ data.avatar }}"
+              alt=""
+              class="w-full object-cover rounded-md"
+            />
+          </div>
+        </td>
+
+        <td>{{ data.createdAt }}</td>
+
+        <td>
+          <div class="space-x-4">
+            <button
+              (click)="deleteCategoryById(data._id)"
+              class="px-4 py-1 bg-[#d37a3f] text-white rounded-md"
+            >
+              Xóa
+            </button>
+
+            <a routerLink="/admin/categories/edit/{{ data._id }}">
+              <button class="px-4 py-1 bg-[#33bd61] text-white rounded-md">
+                Sửa
+              </button>
+            </a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

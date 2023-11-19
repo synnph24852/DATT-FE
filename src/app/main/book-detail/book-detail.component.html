@@ -1,0 +1,199 @@
+<div
+  class="main w-[1100px] mx-auto flex flex-col mt-10 items-center"
+  *ngIf="!product"
+>
+  <h1 class="text-2xl font-semibold my-2">Oop!Error</h1>
+  <p>Không có sản phẩm phù hợp</p>
+</div>
+
+<div class="mt-4 main w-[1100px] mx-auto" *ngIf="product">
+  <div class="menu mb-3 box-module">
+    <ul class="flex">
+      <li class="li text-[#333] opacity-[0.5]"><a href="">Trang chủ</a></li>
+      <li class="text-[#333]">&nbsp;/&nbsp;</li>
+      <li class="li text-[#333] opacity-[0.5]">
+        <!-- <a href=""> Bìa giấy - Bìa nhựa - Bìa Da</a> -->
+      </li>
+      <!-- <li class="text-[#333]">&nbsp;/&nbsp;</li> -->
+      <li>
+        <a routerLink=" {{ product.slug }}">
+          {{ product.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- content -->
+  <div class="content bg-white box-module">
+    <div class="content-header grid grid-cols-[1.2fr_2.1fr_1fr] gap-6 p-5">
+      <div class="content-header-left">
+        <img src="{{ product.avatar }}" alt="" />
+        <div class="list-img flex flex-wrap mt-2">
+          <div
+            *ngFor="let image of product.images"
+            class="mr-[10px] mb-[10px]"
+            href=""
+          >
+            <img class="w-[56px] h-[56px]" src="{{ image }}" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="content-header-center">
+        <div class="content-detail">
+          <h1 class="text-2xl font-semibold">
+            {{ product.name }}
+          </h1>
+          <div class="content-offer">
+            <p class="price text-[25px] text-[#FE642E] my-[10px]">
+              {{ product.price.toLocaleString() }} VNĐ
+            </p>
+            <div class="save">
+              <p class="save-1 text-[14px]">
+                Tiết kiệm:
+                <span class="text-[#FE642E] text-[14px]"
+                  >{{
+                    (product.original_price - product.price).toLocaleString()
+                  }}
+                  đ (25%)</span
+                >
+              </p>
+            </div>
+            <p class="text-[14px] my-[10px]">
+              Giá thị trường: {{ product.original_price.toLocaleString() }} VNĐ
+            </p>
+            <div class="status">
+              <p class="text-[14px]">
+                Tình trạng:
+                <span class="text-[#FE642E] text-[14px]">còn hàng</span>
+              </p>
+            </div>
+            <div class="flex my-[10px]">
+              <div class="mr-2 text-[14px]">Tags:</div>
+              <span class="mr-2 text-[14px]"><a href="">Podcast</a></span>
+              <span class="mr-2 text-[14px]"
+                ><a routerLink=""> Bìa giấy - Bìa nhựa - Bìa da</a></span
+              >
+            </div>
+            <div class="flex items-center my-[10px]">
+              <div>Số lượng:</div>
+              <div class="flex items-center ml-2">
+                <div
+                  class="border px-3 py-1 cursor-pointer bg-yellow-500 text-white hover:opacity-90"
+                  (click)="handleChangeAmount(-1)"
+                >
+                  -
+                </div>
+                <div class="border px-3 py-1">{{ amount }}</div>
+                <div
+                  class="border px-3 py-1 cursor-pointer bg-yellow-500 text-white hover:opacity-90"
+                  (click)="handleChangeAmount(1)"
+                >
+                  +
+                </div>
+              </div>
+            </div>
+            <div class="cart flex py-[10px]">
+              <div
+                class="mx-[10px] py-2 px-4 rounded border-solid border-2 border-[#FE642E] text-[#FE642E] hover:bg-[#FE642E] hover:text-white"
+              >
+                <button (click)="handleAddCart()">Thêm vào giỏ hàng</button>
+              </div>
+              <div
+                class="mx-[10px] py-2 px-4 bg-[#FE642E] hover:bg-[#c9420d] text-white rounded"
+              >
+                <button>Mua ngay</button>
+              </div>
+            </div>
+            <div class="call my-[10px]">
+              <div class="text-[15px]">
+                Gọi đặt hàng:
+                <span class="text-[#FE642E] font-bold">(028) 3820 7153</span>
+                hoặc
+                <span class="text-[#FE642E] font-bold"> 0933 109 009 </span>
+              </div>
+            </div>
+            <div class="info">
+              <div class="text-[16px] font-bold mb-[15px]">
+                Thông tin & Khuyến mãi
+              </div>
+              <div class="text-[14px]">
+                Sử dụng mỗi
+                <span class="text-[#FE642E] font-bold"> 3.000 BBxu</span>để được
+                giảm 10.000đ.
+                <a class="text-[#2E9AFE]" href="">Làm sao để lấy BBxu?</a>
+              </div>
+              <div class="text-[14px]">
+                Freeship nội thành Sài Gòn từ 150.000đ*. Chi tiết tại
+                <a class="text-[#2E9AFE]" href="">đây</a>
+              </div>
+              <div class="text-[14px]">Freeship toàn quốc từ 250.000đ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="content-header-right border-solid border-2 border-[#f7f7f7] h-[260px]"
+      >
+        <ul class="mx-1">
+          <li class="text-sm flex items-center my-4">
+            <i class="bx bx-heart mr-1"></i>
+            <p>Thêm vào yêu thích</p>
+          </li>
+          <li class="text-sm flex items-center">
+            <i class="bx text-2xl bx-user-check mr-1"></i>
+            <p>Uư đãi khách hàng thân thiết</p>
+          </li>
+          <li class="text-sm flex items-center my-4">
+            <i class="bx text-base bx-car mr-2"></i>
+            <p>Để được vận chuyển miễn phí</p>
+          </li>
+          <li class="text-sm items-center">
+            <p class="text-[#FE642E] mb-2 ml-1">
+              Share để nhận BBxu – Mua hàng 0đ
+            </p>
+            <div class="flex items-center">
+              <div
+                class="flex items-center text-white rounded-sm border-none border-2 bg-[#2E9AFE] mx-[10px] px-2"
+              >
+                <i class="bx bx-like mx-1"></i>
+                <button class="font-medium">Thích</button>
+              </div>
+              <div
+                class="flex items-center text-white rounded-sm border-none border-2 bg-[#e60023] mx-[10px] px-2"
+              >
+                <i class="bx bx-save mx-1"></i>
+                <button class="font-medium">Save</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6 box-module">
+    <div class="text-xl font-semibold">Mô tả sản phẩm</div>
+
+    <div
+      class="mt-4 leading-8 max-h-[400px] overflow-y-auto -mr-6"
+      [innerHTML]="product.description"
+    ></div>
+  </div>
+
+  <div class="mt-6 product box-module">
+    <div class="wrapper">
+      <div
+        class="header flex justify-between border-solid border-[#ccc] border-b"
+      >
+        <div class="text-xl font-semibold">Sách liên quan</div>
+      </div>
+      <!-- product -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10 mx-auto pb-20"
+      >
+        <div *ngFor="let book of books">
+          <app-book-item [book]="book" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

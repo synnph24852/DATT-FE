@@ -1,0 +1,56 @@
+<div class="">
+  <a routerLink="/admin/books/add" class="my-4 flex justify-end">
+    <button
+      nz-button
+      class="rounded-md px-4 py-2 bg-[#223ab6] text-white"
+      (click)="showModal()"
+    >
+      Thêm sản phẩm
+    </button>
+  </a>
+  <nz-table #basicTable [nzData]="books">
+    <thead>
+      <tr>
+        <th>Tên sản phẩm</th>
+        <th>Ảnh</th>
+        <th>Giá hiện tại</th>
+        <th>Giá cũ</th>
+        <th>Tác giả</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.name }}</td>
+        <td>
+          <div class="w-14 h-14">
+            <img
+              src="{{ data?.avatar }}"
+              alt=""
+              class="w-full object-cover rounded-md"
+            />
+          </div>
+        </td>
+        <td>{{ data.price }}</td>
+        <td>{{ data.original_price }}</td>
+        <td>{{ data.original_price }}</td>
+
+        <td>
+          <div class="space-x-4">
+            <button
+              (click)="deleteBookById(data._id)"
+              class="px-4 py-1 bg-[#d37a3f] text-white rounded-md"
+            >
+              Xóa
+            </button>
+            <a routerLink="/admin/books/edit/{{ data._id }}">
+              <button class="px-4 py-1 bg-[#33bd61] text-white rounded-md">
+                Sửa
+              </button>
+            </a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

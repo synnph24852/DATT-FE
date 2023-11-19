@@ -1,0 +1,43 @@
+<div class="">
+  <nz-table #basicTable [nzData]="users">
+    <thead>
+      <tr>
+        <th>Họ và tên</th>
+        <th>Ảnh</th>
+        <th>Email</th>
+        <th>Số điện thoại</th>
+        <th>Địa chỉ</th>
+        <th>Chức vụ</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.fullname }}</td>
+        <td>
+          <div class="w-14 h-14">
+            <img
+              src="{{ data.avatar }}"
+              alt=""
+              class="w-full object-cover rounded-md"
+            />
+          </div>
+        </td>
+        <td>{{ data.email }}</td>
+        <td>{{ data.phone }}</td>
+        <td>{{ data.address }}</td>
+        <td class="text-red-500">{{ data.role }}</td>
+        <td>
+          <div class="space-x-4">
+            <button
+              (click)="deleteUserById(data._id)"
+              class="px-4 py-1 bg-[#d37a3f] text-white rounded-md"
+            >
+              Xóa
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

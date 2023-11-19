@@ -1,0 +1,55 @@
+<div class="">
+  <nz-modal
+    [(nzVisible)]="isVisible"
+    nzTitle="Cập nhật trạng thái đơn hàng"
+    (nzOnCancel)="handleCancel()"
+    (nzOnOk)="handleOk()"
+    nzOkText="Cập nhập trạng thái đơn hàng"
+    nzCancelText="Hủy bỏ"
+  >
+    <ng-container *nzModalContent>
+      <div class="flex justify-center">
+        <nz-select ngSize="large" [(ngModel)]="statusOrder">
+          <nz-option
+            nzLabel="Chờ xác nhận"
+            nzValue="pending"
+            disabled
+          ></nz-option>
+          <nz-option nzLabel="Chờ vận chuyển" nzValue="waiting"></nz-option>
+          <nz-option nzLabel="Đang vận chuyển" nzValue="delivering"></nz-option>
+        </nz-select>
+      </div>
+    </ng-container>
+  </nz-modal>
+
+  <nz-table #basicTable [nzData]="orders">
+    <thead>
+      <tr>
+        <th>Mã đơn hàng</th>
+        <th>Ngày đặt hàng</th>
+        <th>Trạng thái</th>
+        <th>Sản phẩm đã đặt</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data?._id }}</td>
+
+        <td>{{ data?.createdAt }}</td>
+        <td>{{ data?.status }}</td>
+        <td>{{ data?.createdAt }}</td>
+
+        <td>
+          <div class="space-x-4">
+            <button
+              (click)="showModal(data._id)"
+              class="px-4 py-1 bg-[#d37a3f] text-white rounded-md"
+            >
+              Update trạng thái
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

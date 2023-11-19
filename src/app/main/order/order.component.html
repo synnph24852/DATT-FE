@@ -1,0 +1,91 @@
+<div class="flex flex-col max-w-5xl mx-auto">
+  <div
+    class="flex items-center w-full py-2 px-4 bg-white mt-3 flex-col m-auto rounded-md"
+    *ngFor="let order of orders"
+  >
+    <div class="flex items-start w-full mb-3 pt-3 flex-col">
+      <div class="flex gap-2">
+        <span class="font-medium">Trạng thái:</span
+        ><span class="text-red-500">{{
+          order.status === "cancel"
+            ? "Đã hủy"
+            : order.status === "waiting"
+            ? "Chờ vận chuyển"
+            : order.status === "delivering"
+            ? "Đang vận chuyển"
+            : order.status === "done"
+            ? "Giao hàng thành công"
+            : "Chờ xác nhận shop"
+        }}</span>
+      </div>
+      <div class="flex gap-2">
+        <span class="font-medium">Thanh toán:</span
+        ><span class="text-red-500">Chưa thanh toán</span>
+      </div>
+    </div>
+    <div class="w-full flex flex-col gap-2">
+      <div *ngFor="let book of order.books">
+        <div class="flex gap-3">
+          <span class="w-24 h-24 inline-block"
+            ><img
+              class="w-full h-full object-cover rounded-sm"
+              src="{{ book.book.avatar }}"
+          /></span>
+          <div class="w-[80%]">
+            <h1 class="text-base font-bold">{{ book.book.name }}</h1>
+
+            <div class="mt-1 flex gap-3">
+              <span class="text-red-500 font-medium"
+                >{{ book.book.price }} VNĐ</span
+              >
+              <p>x{{ book.amount }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-2 w-full items-end pt-3">
+      <div>
+        <span style="color: rgb(255, 66, 78)">Tổng tiền: </span
+        ><span style="font-size: 13px; color: rgb(56, 56, 61); font-weight: 700"
+          >{{ order.total_price }} VNĐ</span
+        >
+      </div>
+      <div class="flex gap-3 w-full max-w-xs">
+        <button
+          class="hidden"
+          type="button"
+          style="
+            flex: 1 1 0%;
+            height: 40px;
+            border: 1px solid rgb(212, 205, 205);
+            border-radius: 4px;
+            color: red;
+            font-size: 15px;
+            font-weight: 400;
+          "
+        >
+          <span>Hủy đơn hàng</span></button
+        ><button
+          type="button"
+          class="ant-btn css-1e3x2xa ant-btn-default"
+          style="
+            flex: 1 1 0%;
+            background: rgb(147, 51, 234);
+            height: 40px;
+            border: none;
+            width: 100%;
+            border-radius: 4px;
+            color: rgb(255, 255, 255);
+            font-size: 15px;
+            font-weight: 400;
+          "
+          (click)="handleCancelOrder(order._id)"
+        >
+          <span>Hủy đơn hàng</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <hr class="my-2" />
+</div>

@@ -1,0 +1,67 @@
+<section class="flex flex-col md:flex-row h-screen items-center">
+  <div class="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
+    <img
+      src="../../../assets/images/bg-auth.jpg"
+      alt=""
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <div
+    class="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center"
+  >
+    <div class="w-full h-100">
+      <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">
+        Đăng ký tài khoản mua sách
+      </h1>
+
+      <form
+        [formGroup]="userForm"
+        (ngSubmit)="onHandleSubmit()"
+        class="p-4 flex flex-col gap-2"
+      >
+        <div class="flex flex-col gap-2">
+          <label class="font-bold">Họ và tên</label>
+          <input
+            type="email"
+            formControlName="fullname"
+            class="p-2 border-2 border-gray-500 rounded outline-none"
+            placeholder="Nhập họ và tên.."
+          />
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label class="font-bold">Email</label>
+          <input
+            type="email"
+            formControlName="email"
+            class="p-2 border-2 border-gray-500 rounded outline-none"
+            placeholder="Nhập email.."
+          />
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label class="font-bold">Password</label>
+          <input
+            type="password"
+            formControlName="password"
+            class="p-2 border-2 border-gray-500 rounded outline-none"
+            placeholder="Nhập password.."
+          />
+        </div>
+        <p class="mt-3">
+          Đã có tài khoản??
+          <a
+            routerLink="/login"
+            class="text-blue-500 hover:text-blue-700 font-semibold"
+          >
+            Đăng nhập
+          </a>
+        </p>
+        <button type="submit" class="p-2 text-white bg-blue-500 rounded">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

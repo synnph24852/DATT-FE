@@ -1,0 +1,93 @@
+<div class="container-fluid px-0 bg-slate-200 max-w-full">
+  <div class="fixed left-0 bottom-0 top-0 bg-cyan-950 w-[300px]">
+    <ul class="px-0">
+      <li class="py-3 pl-5 border-b-2 hover:bg-gray-700">
+        <a routerLink="books" class="space-x-3 no-underline flex">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            fill="white"
+            class="bi bi-cart-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+            />
+          </svg>
+
+          <p class="text-white">Quản lý sách</p>
+        </a>
+      </li>
+
+      <li class="py-3 pl-5 border-b-2 hover:bg-gray-700">
+        <a routerLink="categories" class="space-x-3 no-underline flex">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            fill="white"
+            class="bi bi-tags-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"
+            />
+            <path
+              d="M1.293 7.793A1 1 0 0 1 1 7.086V2a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l.043-.043-7.457-7.457z"
+            />
+          </svg>
+
+          <p class="text-white">Quản Lý danh mục sách</p>
+        </a>
+      </li>
+
+      <li class="py-3 pl-5 border-b-2 hover:bg-gray-700">
+        <a routerLink="users" class="space-x-3 no-underline flex">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            fill="white"
+            class="bi bi-cart-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+            />
+          </svg>
+
+          <p class="text-white">Quản Lý người dùng</p>
+        </a>
+      </li>
+
+      <li class="py-3 pl-5 border-b-2 hover:bg-gray-700">
+        <a routerLink="orders" class="space-x-3 no-underline flex">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            fill="white"
+            class="bi bi-cart-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+            />
+          </svg>
+
+          <p class="text-white">Quản Lý đơn hàng</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="grid grid-cols-[300px_1fr] gap-4 mx-2">
+    <div class=""></div>
+    <div class="my-2">
+      <main>
+        <router-outlet />
+      </main>
+    </div>
+  </div>
+</div>

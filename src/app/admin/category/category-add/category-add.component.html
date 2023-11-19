@@ -1,0 +1,74 @@
+<div class="w-full max-w-[800px] mx-auto mt-2 p-8 bg-[#ececec] shadow-sm">
+  <h1 class="text-2xl mb-4 font-semibold text-center">Thêm mới một danh mục</h1>
+
+  <form
+    [formGroup]="formBook"
+    (ngSubmit)="onHandleSubmit()"
+    class="rounded pt-6 pb-8 mb-4 grid grid-cols-2 gap-4"
+  >
+    <div class="mb-4">
+      <label for="name" class="block text-gray-700 text-sm font-bold mb-2"
+        >Tên danh mục <strong class="text-red-500">*</strong></label
+      >
+      <input
+        type="text"
+        id="name"
+        placeholder="Tên danh mục..."
+        formControlName="name"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      />
+    </div>
+
+    <!-- Avatar -->
+    <div class="mb-4">
+      <label for="categoryId" class="block text-gray-700 text-sm font-bold mb-2"
+        >Avatar <strong class="text-red-500">*</strong></label
+      >
+      <div class="block" title="Tên dịch vụ">
+        <div class="mt-1 flex">
+          <div
+            class="bg-white relative flex border border-dashed w-[210px] h-[210px] border-[#ccc] cursor-pointer hover:bg-gray-300 bg-cover bg-center"
+            style="background-image: url('{{ avatar }}')"
+          >
+            <div
+              class="absolute top-1/2 left-0 right-0 -translate-y-1/2 text-center"
+            >
+              Mời chọn ảnh danh mục
+              <p>
+                <i class="text-red-500 text-xl bx bx-plus"></i>
+              </p>
+            </div>
+
+            <label
+              for="avatar-service"
+              class="z-10 block w-full h-full cursor-pointer hover:bg-gray-300"
+            ></label>
+            <input
+              type="file"
+              id="avatar-service"
+              (change)="handleChange($event)"
+              hidden
+              class="avatar-upload-service"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class=""></div>
+    <div class="mb-4 flex justify-end">
+      <a
+        routerLink="/admin/categories"
+        class="px-4 py-1 bg-[#d37a3f] text-white rounded-md hover:opacity-90"
+      >
+        Trở lại
+      </a>
+      <button
+        type="submit"
+        class="ml-6 px-4 py-1 bg-[#33bd61] text-white rounded-md hover:opacity-90"
+      >
+        Thêm một danh mục mới
+      </button>
+    </div>
+  </form>
+</div>

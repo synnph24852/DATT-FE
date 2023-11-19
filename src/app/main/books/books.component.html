@@ -1,0 +1,19 @@
+<div class="max-w-[1300px] mx-auto">
+  <div class="mt-6 product box-module">
+    <div class="wrapper">
+      <div
+        class="header flex justify-between border-solid border-[#ccc] border-b"
+      >
+        <div class="text-xl font-semibold">Sách mới phát hành</div>
+      </div>
+      <!-- product -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10 mx-auto pb-20"
+      >
+        <div *ngFor="let book of books">
+          <app-book-item [book]="book" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
